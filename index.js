@@ -26,6 +26,7 @@ class Job extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      i: 0,
       name: '小讲堂',
       courses: ['数学', '语文', '英语'],
       styleObj: {
@@ -34,12 +35,12 @@ class Job extends React.Component {
       }
     }
   }
-  
+
   render() {
     return (
       <div className="job">
-        <h1>欢迎到<span className="name" style={ this.state.styleObj }>{ this.state.name }</span>来学习</h1>
-        <p>我的工作是{ this.props.job }</p>
+        <h1>{ this.state.i }欢迎到<span className="name" style={ this.state.styleObj }>{ this.state.name }</span>来学习</h1>
+        <p>我的工作!!!</p>
         <button onClick = { this.modifyName.bind(this) }>修改名字</button>
         <button onClick = { this.setStyle.bind(this) }>样式</button>
       </div>
@@ -47,14 +48,15 @@ class Job extends React.Component {
   }
   modifyName() {
     let newName = window.prompt('输入标题','小讲堂')
-    this.setState({name: newName})
+    this.setState({name: newName, i: ++this.state.i})
   }
 
   setStyle() {
     this.setState({
       styleObj: {
         color: 'blue'
-      }
+      }, 
+      i: ++this.state.i
     })
   }
 }
